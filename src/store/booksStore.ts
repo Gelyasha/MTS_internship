@@ -11,19 +11,19 @@ class BooksStore implements IBookStore {
 
     constructor() {
         makeAutoObservable(this);
-        this.#loadBooksFromLoacalStorage();
+        this.loadBooksFromLoacalStorage();
     };
 
     addBook(book: IBook) {
         this.books.push(book);
-        this.#saveBooksToLoacalStorage();
+        this.saveBooksToLoacalStorage();
     };
 
-    #saveBooksToLoacalStorage() {
+    saveBooksToLoacalStorage() {
         localStorage.setItem("books", JSON.stringify(this.books))
     };
 
-    #loadBooksFromLoacalStorage() {
+    loadBooksFromLoacalStorage() {
         const booksFromStorage = localStorage.getItem("books")
         if (booksFromStorage) {
             this.books = JSON.parse(booksFromStorage)

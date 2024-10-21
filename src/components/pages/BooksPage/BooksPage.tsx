@@ -1,9 +1,11 @@
 import React, { FC } from "react";
 import classes from './BooksPage.module.css'
 
-const BooksPage: FC = () =>{
+const BooksPage: FC = () => {
     return (
-        <div></div>
+        <div>
+            Books page
+        </div>
     )
 };
 
