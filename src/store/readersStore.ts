@@ -1,5 +1,7 @@
-import { makeAutoObservable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import { IReader } from "../types"
+
+const LS_KEY = 'readers';
 
 interface IReadersStore {
     readers: IReader[],
@@ -10,7 +12,10 @@ class ReadersStore implements IReadersStore {
     readers: IReader[] = [];
 
     constructor() {
-        makeAutoObservable(this);
+        makeObservable(this, {
+            readers: observable,
+            addReader: action
+        });
         this.#loadReadersFromLoacalStorage();
     };
 
@@ -20,11 +25,11 @@ class ReadersStore implements IReadersStore {
     };
 
     #saveReadersToLoacalStorage() {
-        localStorage.setItem("readers", JSON.stringify(this.readers))
+        localStorage.setItem(LS_KEY, JSON.stringify(this.readers))
     };
 
     #loadReadersFromLoacalStorage() {
-        const readersFromStorage = localStorage.getItem("readers")
+        const readersFromStorage = localStorage.getItem(LS_KEY)
         if (readersFromStorage) {
             this.readers = JSON.parse(readersFromStorage)
         }
