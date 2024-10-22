@@ -1,0 +1,16 @@
+.reader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reader:not(:first-child) {
+    margin-top: 20px;
+}
+
+.readersList {
+    max-height: 350px;
+    overflow-y: auto;
+    margin-right: -20px;
+    padding-right: 20px;
+}

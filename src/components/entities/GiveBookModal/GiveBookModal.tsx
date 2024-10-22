@@ -4,6 +4,8 @@ import { observer } from 'mobx-react-lite';
 import { Button, Modal } from 'antd';
 import readersStore from '../../../store/readersStore';
 
+import classes from './GiveBookModal.module.css';
+
 interface IProps {
     readers: IReader[],
     book: IBook,
@@ -27,22 +29,27 @@ const GiveBookModal: FC<IProps> = observer(({
             onCancel={onCancel}
             footer={null}
         >
-            {readers.map((reader) => {
-                const hasThisBook = reader.bookList.some((readersBook) => readersBook.id === book.id);
-                return (
-                    <div key={reader.id}>
-                        <span>{reader.lastName}</span>
-                        {hasThisBook && <span>Уже читает эту книгу</span>}
-                        {!hasThisBook && (
-                            <Button
-                                onClick={() => readersStore.giveBook(reader.id, book)}
-                            >
-                                Выдать
-                            </Button>
-                        )}
-                    </div>
-                )
-            })}
+            <div className={classes.readersList}>
+                {readers.map((reader) => {
+                    const hasThisBook = reader.bookList.some((readersBook) => readersBook.id === book.id);
+                    return (
+                        <div
+                            key={reader.id}
+                            className={classes.reader}
+                        >
+                            <span>{reader.lastName}</span>
+                            {hasThisBook && <span>Уже читает эту книгу</span>}
+                            {!hasThisBook && (
+                                <Button
+                                    onClick={() => readersStore.giveBook(reader.id, book)}
+                                >
+                                    Выдать
+                                </Button>
+                            )}
+                        </div>
+                    )
+                })}
+            </div>
         </Modal>
     )
 });

@@ -12,7 +12,7 @@ const Navbar: FC = () => {
     return (
         <div className={classes.navbar}>
             <Button
-                
+                size="large"
                 onClick={() => {
                     navigate('/')
                 }}
@@ -20,6 +20,7 @@ const Navbar: FC = () => {
                 Книги
             </Button>
             <Button
+                size="large"
                 onClick={() => {
                     navigate('/readers')
                 }}

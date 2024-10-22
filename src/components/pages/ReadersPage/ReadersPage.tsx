@@ -17,6 +17,7 @@ const ReadersPage: FC<IProps> = observer(({ readers }) => {
     return (
         <div>
             <Button
+                size="large"
                 onClick={() => {
                     setIsModalVisible(true)
                 }}

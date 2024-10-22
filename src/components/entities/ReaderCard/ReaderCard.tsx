@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 
 import classes from './ReaderCard.module.css';
 import { IReader } from "../../../types";
-import { Button, Card, Collapse } from "antd";
+import { Card, Collapse } from "antd";
 import BookCard from "../BookCard";
 
 interface IProps {

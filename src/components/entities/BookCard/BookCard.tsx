@@ -23,6 +23,8 @@ const BookCard: FC<IProps> = ({
             {!isView && (
                 <Button
                     onClick={handleGiveBookClick}
+                    className={classes.button}
+                    size="large"
                 >
                     Выдать читателю
                 </Button>

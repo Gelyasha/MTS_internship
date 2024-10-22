@@ -31,6 +31,7 @@ const BooksPage: FC<IProps> = observer(({ books }) => {
     return (
         <div>
             <Button
+                size="large"
                 onClick={() => {
                     setIsAddBookModalVisible(true);
                 }}
