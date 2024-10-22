@@ -4,6 +4,7 @@ import { IReader } from "../../../types";
 import { observer } from "mobx-react-lite";
 import { Button } from "antd";
 import AddReaderModal from "../../entities/AddReaderModal";
+import ReaderCard from "../../entities/ReaderCard";
 
 interface IProps {
     readers: IReader[],
@@ -15,15 +16,6 @@ const ReadersPage: FC<IProps> = observer(({ readers }) => {
 
     return (
         <div>
-            <div>
-                {readers.map((reader) => {
-                    return (
-                        <div>
-                            Фамилия: {reader.lastName}
-                        </div>
-                    )
-                })}
-            </div>
             <Button
                 onClick={() => {
                     setIsModalVisible(true)
@@ -35,6 +27,16 @@ const ReadersPage: FC<IProps> = observer(({ readers }) => {
                 isVisible={isModalVisible}
                 setIsVisible={setIsModalVisible}
             />
+            <div>
+                {readers.map((reader) => {
+                    return (
+                        <ReaderCard
+                            key={reader.id}
+                            reader={reader}
+                        />
+                    )
+                })}
+            </div>
         </div>
     )
 });

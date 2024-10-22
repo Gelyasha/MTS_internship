@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 import { IBook } from "../../../types";
 import AddBookModal from "../../entities/AddBookModal";
 import { Button } from "antd";
+import BookCard from "../../entities/BookCard";
 
 interface IProps {
     books: IBook[],
@@ -15,16 +16,6 @@ const BooksPage: FC<IProps> = observer(({ books }) => {
 
     return (
         <div>
-            <div>
-                {books.map((book) => {
-                    return (
-                        <div>
-                            Название: {book.title}
-                            Описание: {book.description}
-                        </div>
-                    )
-                })}
-            </div>
             <Button
                 onClick={() => {
                     setIsModalVisible(true)
@@ -36,6 +27,20 @@ const BooksPage: FC<IProps> = observer(({ books }) => {
                 isVisible={isModalVisible}
                 setIsVisible={setIsModalVisible}
             />
+            <div>
+                {books.map((book) => {
+                    return (
+                        <BookCard
+                            key={book.id}
+                            book={book}
+                        />
+                        // <div>
+                        //     Название: {book.title}
+                        //     Описание: {book.description}
+                        // </div>
+                    )
+                })}
+            </div>
         </div>
     )
 });

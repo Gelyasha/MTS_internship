@@ -1,0 +1,9 @@
+.card {
+    min-width: 300px;
+    min-height: 200px;
+    font-size: 20px;
+}
+
+.itemProperty {
+    color: rgba(0, 0, 0, 0.88);
+}
