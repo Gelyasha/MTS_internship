@@ -27,7 +27,7 @@ const ReadersPage: FC<IProps> = observer(({ readers }) => {
                 isVisible={isModalVisible}
                 setIsVisible={setIsModalVisible}
             />
-            <div>
+            <div className={classes.readersList}>
                 {readers.map((reader) => {
                     return (
                         <ReaderCard

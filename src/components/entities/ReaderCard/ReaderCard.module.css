@@ -1,9 +1,16 @@
 .card {
-    min-width: 300px;
+    min-width : 300px;
     min-height: 150px;
-    font-size: 20px;
+    font-size : 20px;
 }
 
-.itemProperty {
-    color: rgba(0, 0, 0, 0.88);
+.bookList {
+    color                : rgba(0, 0, 0, 0.88);
+    display              : grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap                  : 20px;
+}
+
+.title {
+    margin-bottom: 20px;
 }

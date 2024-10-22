@@ -5,11 +5,13 @@ import classes from './BookCard.module.css';
 
 interface IProps {
     book: IBook,
+    handleGiveBookClick?: () => void,
     isView?: boolean,
 }
 
 const BookCard: FC<IProps> = ({
     book,
+    handleGiveBookClick,
     isView = false,
 }) => {
     return (
@@ -19,7 +21,9 @@ const BookCard: FC<IProps> = ({
             <p className={classes.itemProperty}>Название: {book.title}</p>
             <p className={classes.itemProperty}>Описание: {book.description}</p>
             {!isView && (
-                <Button>
+                <Button
+                    onClick={handleGiveBookClick}
+                >
                     Выдать читателю
                 </Button>
             )

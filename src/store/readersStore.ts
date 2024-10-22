@@ -1,5 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
-import { IReader } from "../types"
+import { IBook, IReader } from "../types"
+import { notification } from "antd";
 
 const LS_KEY = 'readers';
 
@@ -28,6 +29,20 @@ class ReadersStore implements IReadersStore {
         this.readers.push(newReader);
         this.#saveReadersToLoacalStorage();
     };
+
+    giveBook(readerId: number, book: IBook) {
+        const reader = this.readers.find((reader) => reader.id === readerId);
+        if (!reader) {
+            notification.error({ message: 'Читатель не найден' })
+            return
+        }
+        const isExist = reader.bookList.some((readerBook) => readerBook.id === book.id);
+        if (isExist) {
+            notification.error({ message: 'Читатель уже взял эту книгу' })
+            return
+        }
+        reader.bookList.push(book);
+    }
 
     #saveReadersToLoacalStorage() {
         localStorage.setItem(LS_KEY, JSON.stringify(this.readers))
