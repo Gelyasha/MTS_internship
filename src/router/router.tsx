@@ -5,6 +5,7 @@ import BooksPage from "../components/pages/BooksPage";
 import ReadersPage from "../components/pages/ReadersPage";
 import Page404 from "../components/pages/Page404";
 import booksStore from "../store/booksStore";
+import readersStore from "../store/readersStore";
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
         path: '/readers',
         element: (
             <Layout>
-                <ReadersPage />
+                <ReadersPage readers={readersStore.readers} />
             </Layout>
         ),
     },

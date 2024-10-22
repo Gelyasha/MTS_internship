@@ -5,7 +5,7 @@ const LS_KEY = 'readers';
 
 interface IReadersStore {
     readers: IReader[],
-    addReader: (reader: IReader) => void,
+    addReader: (reader: { lastName: string }) => void,
 }
 
 class ReadersStore implements IReadersStore {
@@ -19,8 +19,13 @@ class ReadersStore implements IReadersStore {
         this.#loadReadersFromLoacalStorage();
     };
 
-    addReader(reader: IReader) {
-        this.readers.push(reader);
+    addReader(reader: { lastName: string }) {
+        const newReader: IReader = {
+            ...reader,
+            bookList: [],
+            id: Date.now(),
+        }
+        this.readers.push(newReader);
         this.#saveReadersToLoacalStorage();
     };
 
